@@ -17,6 +17,8 @@ def test_real_readme_builds_without_svg(tmp_path: Path) -> None:
         for entry in section.entries:
             assert html.escape(entry.name) in page
     assert "Adaptive thinking is always on" in page
+    assert "cumulative GitHub stars" in page
+    assert 'id="video--creative"' in page
     assert 'src="claude55-hero.png"' in page
     assert (dist / "claude55-hero.png").read_bytes().startswith(b"\x89PNG")
     assert ".svg" not in page.lower()
@@ -56,10 +58,10 @@ def test_star_cache_overrides_readme_values(tmp_path: Path) -> None:
     )
     dist = build_site(dist=tmp_path / "dist", readme=readme, stars=stars, hero=REPO / "assets" / "claude55-hero.png")
     page = (dist / "index.html").read_text(encoding="utf-8")
-    assert "★ 99 stars" in page
+    assert "★ 99 cumulative GitHub stars" in page
     assert "Apache-2.0" in page
     assert "2026-09-26" in page
-    assert "★ 1 star" not in page
+    assert "★ 1 cumulative GitHub star" not in page
 
 
 def test_inline_code_and_links_are_escaped() -> None:

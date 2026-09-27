@@ -19,6 +19,7 @@ Star counts, SPDX license ids, and last-commit dates were read from the GitHub A
 - [Instruction files](#instruction-files)
 - [Plugins and hooks](#plugins-and-hooks)
 - [Evals](#evals)
+- [Video & Creative](#video--creative)
 
 ## Migrating to 5.5
 
@@ -71,11 +72,34 @@ Getting the most out of Opus 5.5 (Addy Osmani, 22 September 2026, listed below) 
 - [livenerf](https://github.com/ninjahawk/livenerf) - Daily drift check for Opus 5.5 after the 2026-09-22 launch, run through headless Claude Code. The README says the first results row comes after day 20 of the series. 45 stars, no license, last commit 2026-09-26.
 - [vulcanbench-opus55-traces](https://github.com/morganlinton/vulcanbench-opus55-traces) - 115 redacted Claude Code traces from an Opus 5.5 sweep of VulcanBench Frontier v4 at five effort levels (22–24 September 2026). Task text, code, and assistant prose are withheld. Sweep code is the general [VulcanBench](https://github.com/morganlinton/VulcanBench) harness (86 stars, Apache-2.0, last commit 2026-09-26). 0 stars, no license, last commit 2026-09-26.
 
+## Video & Creative
+
+Star counts are cumulative repository totals, not Opus 5.5 adoption, and Higgsfield-style generative clips are not Claude-rendered.
+
+- [brag](https://github.com/latent-spaces/brag) - Claude Code skill and plugin that turns a project or URL into a short launch video; its `/brag-slim` path is explicitly adapted for Claude Opus 5.5, while the classic path uses HyperFrames. 10154 stars, MIT, last commit 2026-09-24.
+- [Claude Animation Skill](https://github.com/buildwithhanif/claude-animation-skill) - Claude plugin for hand-drawn 2D animation written as code, with Node canvas, frame-exact rendering, synthesized sound, and FFmpeg output. 14 stars, MIT, last commit 2026-09-23.
+- [Claude Remotion Skill](https://github.com/haidrrrry/claude-remotion-skill) - Claude agent skill for creating and editing Remotion motion graphics with captions, B-roll, sound design, and a render-inspect-fix loop; it is model-agnostic rather than Opus-5.5-specific. 206 stars, MIT, last commit 2026-08-12.
+- [Claude Video / Watch](https://github.com/bradautomates/claude-video) - Claude plugin and `/watch` skill that supplies timestamped frames and transcripts so an agent can inspect video; it is an input and analysis utility, not a renderer. 17713 stars, MIT, last commit 2026-09-25.
+- [Flick](https://github.com/Creatorberry/flick) - Claude Code plugin that turns a video, link, or transcript into approved scene-by-scene Remotion animations and lets the agent revise individual scenes. 263 stars, MIT, last commit 2026-08-26.
+- [HyperFrames](https://github.com/heygen-com/hyperframes) - Agent-friendly HTML, CSS, and JavaScript framework whose skills plan, lint, preview, and deterministically render MP4 video through headless Chrome and FFmpeg; the repository lists Claude Code among supported agents. 53434 stars, Apache-2.0, last commit 2026-09-27.
+- [Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar) - Claude Code plugin and style kit with 39 code-drawn film styles and sample films that the repository says were made with Claude Opus 5.5; treat its sample films as author claims and note that the API returned no SPDX license. 210 stars, no license, last commit 2026-09-27.
+- [Manim Skill (4-role pipeline)](https://github.com/vumichien/manim-skill) - Claude Code plugin that uses researcher, planner, implementer, and main roles to turn ideas, papers, or mathematics into rendered Manim videos with narration and captions. 6 stars, Apache-2.0, last commit 2026-05-19.
+- [Manim Skill (plan, code, render)](https://github.com/Yusuke710/manim-skill) - Claude Code plugin that plans, codes, renders, and iterates Manim videos. 157 stars, MIT, last commit 2026-01-26.
+- [Manim Skills (best practices)](https://github.com/adithya-s-k/manim_skill) - Agent skills for Manim Community Edition and ManimGL that provide tested animation guidance and examples; the repository documents installation for Claude and other coding agents, but has no Opus-5.5-specific evidence. 1122 stars, MIT, last commit 2026-01-23.
+- [Papermotion](https://github.com/francozanardi/papermotion) - Experimental paper-cutout animation engine and agent skill with deterministic offline Chromium/FFmpeg rendering and self-checks; its README identifies several example films as made with Claude Opus 5.5. 1 star, MIT, last commit 2026-09-26.
+- [Remotion](https://github.com/remotion-dev/remotion) - React-based video framework with an agent-era workflow and official Claude-facing skills; its repository points to a separate special Remotion license, while the GitHub API returned no SPDX id. 60657 stars, no license, last commit 2026-09-27.
+- [Remotion Agent Skills](https://github.com/remotion-dev/skills) - Official Remotion Agent Skills for Claude Code and other coding agents, including skills for creating, rendering, captions, maps, and multimedia. 4730 stars, no license, last commit 2026-09-25.
+- [Remotion Claude Code plugin](https://github.com/remotion-dev/claude-code-plugin) - Official Remotion Agent Skills plugin for Claude Code; the repository describes it as an internal package with no documentation, so use the documented skills repository for general installation guidance. 21 stars, no license, last commit 2026-09-25.
+- [Riso Windowseat](https://github.com/sevenevesai/riso-windowseat) - Claude Code skill kit for deterministic single-HTML Canvas/Web Audio films, with craft docs, a render harness, frame inspection, and reusable procedural animation workflows. 231 stars, MIT, last commit 2026-09-25.
+- [video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) - Agent skill that turns Claude Code or Codex into a Remotion motion-design studio with shot recipes, product-video templates, sound design, and a browser workbench; no Opus-5.5-specific user output was found. 9660 stars, Apache-2.0, last commit 2026-09-27.
+- [video-use](https://github.com/browser-use/video-use) - Claude Code skill for editing supplied footage with transcript-driven cuts, captions, overlays, and self-evaluation; the latest commit is co-authored by Claude Opus 5.5, but the pixels are edits of user footage rather than model-generated video. 27348 stars, MIT, last commit 2026-09-24.
+
 ## Related Lists
 
 Creative indexes, not developer setup. Linked so this list does not pretend they are absent.
 
-- [Awesome Claude Opus 5.5 Videos](https://github.com/athemeroy/awesome-opus-5-5-videos) - Source-linked index of videos made with Opus 5.5. 194 stars, CC-BY-4.0, last commit 2026-09-27.
+- [Awesome Claude Opus 5.5 Videos](https://github.com/athemeroy/awesome-opus-5-5-videos) - Source-linked index of videos made with Opus 5.5. 197 stars, CC-BY-4.0, last commit 2026-09-27.
+- [Awesome Claude Video](https://github.com/opusvideo/awesome-claude-video) - Curated collection of Claude Opus 5.5 videos and animations, with prompts and workflows. 90 stars, no license, last commit 2026-09-26.
 - [awesome-opus-video-skills](https://github.com/ismoshushi/awesome-opus-video-skills) - Installable video-production skills. The maintainer marks some entries as naming Opus 5.5 and treats the rest as generic Claude skills. 1 star, MIT, last commit 2026-09-26.
 
 ## Contributing

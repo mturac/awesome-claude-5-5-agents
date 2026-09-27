@@ -127,7 +127,7 @@ def meta_html(entry: Entry) -> str:
     chips: list[str] = []
     if entry.stars is not None:
         label = "star" if entry.stars == 1 else "stars"
-        chips.append(f"★ {entry.stars:,} {label}")
+        chips.append(f"★ {entry.stars:,} cumulative GitHub {label}")
     if entry.license:
         chips.append("No license" if entry.license.lower() == "no license" else entry.license)
     if entry.last_commit:
