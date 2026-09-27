@@ -2,7 +2,7 @@
 
 > Developer setup for the Claude 5.5 family: skills, subagents, plugins, instruction files, hooks, migration tools, and eval harnesses.
 
-[Claude Opus 5.5](https://www.anthropic.com/claude-opus-5-5) shipped on 22 September 2026 as the first model in the 5.5 family. That post says Claude Sonnet 5.5 and Claude Haiku 5.5 will follow in the coming weeks. This list tracks setup that is specific to 5.5, or that has been checked against it. Videos, games, demos, and showcase apps are out of scope.
+Anthropic's launch post on 22 September 2026 introduces Claude Opus 5.5 as the first model in the 5.5 family and says Claude Sonnet 5.5 and Claude Haiku 5.5 will follow in the coming weeks. This list tracks setup that is specific to 5.5, or that has been checked against it. Videos, games, demos, and showcase apps are out of scope.
 
 Star counts, SPDX license ids, and last-commit dates were read from the GitHub API on 2026-09-27. Commit dates are UTC. "No license" means the API returned no SPDX id.
 
@@ -15,14 +15,12 @@ Star counts, SPDX license ids, and last-commit dates were read from the GitHub A
 - [Instruction files](#instruction-files)
 - [Plugins and hooks](#plugins-and-hooks)
 - [Evals](#evals)
-- [Related lists](#related-lists)
-- [Contributing](#contributing)
 
 ## Migrating to 5.5
 
-Claude Opus 5.5 uses the fixed model id `claude-opus-5-5`. The [migration guide](https://platform.claude.com/docs/en/models/opus-5-5/migration-guide) says the API returns HTTP 400 for `thinking` values `{"type": "disabled"}` and `{"type": "enabled", "budget_tokens": N}`. Adaptive thinking is always on: omit `thinking`, or send `{"type": "adaptive"}`. The same page says `tool_choice` types `any` and `tool` return 400, including on the token-counting endpoint. `{"type": "auto"}` and `{"type": "none"}` are the accepted forms. Setting `temperature`, `top_p`, or `top_k` to any non-default value returns 400; the guide's path is to omit them. An assistant prefill at the end of `messages` is rejected.
+Claude Opus 5.5 uses the fixed model id `claude-opus-5-5`. The migration guide listed below says the API returns HTTP 400 for `thinking` values `{"type": "disabled"}` and `{"type": "enabled", "budget_tokens": N}`. Adaptive thinking is always on: omit `thinking`, or send `{"type": "adaptive"}`. The same page says `tool_choice` types `any` and `tool` return 400, including on the token-counting endpoint. `{"type": "auto"}` and `{"type": "none"}` are the accepted forms. Setting `temperature`, `top_p`, or `top_k` to any non-default value returns 400; the guide's path is to omit them. An assistant prefill at the end of `messages` is rejected.
 
-On the Claude API and Google Cloud, a computer-use tool of type `computer_20251124` returns 400. The replacement is `computer_toolset_20260801`, with no computer-use beta header and no `name` or display size on the tool entry. On Amazon Bedrock, `computer_20251124` still works on Opus 5.5. The guide points to the [computer use tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool#migrate-from-computer-20251124) page for the agent-loop changes.
+On the Claude API and Google Cloud, a computer-use tool of type `computer_20251124` returns 400. The replacement is `computer_toolset_20260801`, with no computer-use beta header and no `name` or display size on the tool entry. On Amazon Bedrock, `computer_20251124` still works on Opus 5.5. The computer use tool entry below is the page that guide cites for the agent-loop changes.
 
 Effort is the only request parameter that controls thinking depth. The guide lists five levels (`low`, `medium`, `high`, `xhigh`, `max`) and says the default is `medium`, where Claude Opus 5's default is `high`. The 1M-token context window is the default, and a context-window beta header for older models has no effect. Responses can begin with `thinking` blocks, so callers select blocks by `type`. In a tool-use loop, those blocks go back unmodified; edited, reordered, or partly dropped thinking blocks return 400. Thinking text is omitted by default (`thinking.display` defaults to `"omitted"`).
 
@@ -30,7 +28,7 @@ Thinking blocks are tied to the model and the conversation. The guide says that 
 
 The same guide documents `/claude-api migrate this project to claude-opus-5-5` for the bundled Claude API skill. The skill entry below records what the docs say and what the public skill tree still contains.
 
-[Getting the most out of Opus 5.5](https://claude.dev/blog/getting-the-most-out-of-opus-5-5/) (Addy Osmani, 22 September 2026) is about behavior in Claude and Claude Code, separate from those HTTP 400s. It says Opus 5.5 thinks before every reply, so lines such as "think carefully" can come out of prompts and saved instructions, and that effort is how you change thinking depth in Claude Code. It also shows a CLAUDE.md rule for when to continue and when to stop, splitting a large audit across subagents, and keeping the task list in a file so it survives context compaction.
+Getting the most out of Opus 5.5 (Addy Osmani, 22 September 2026, listed below) is about behavior in Claude and Claude Code, separate from those HTTP 400s. It says Opus 5.5 thinks before every reply, so lines such as "think carefully" can come out of prompts and saved instructions, and that effort is how you change thinking depth in Claude Code. It also shows a CLAUDE.md rule for when to continue and when to stop, splitting a large audit across subagents, and keeping the task list in a file so it survives context compaction.
 
 ## Official guides
 
@@ -69,7 +67,7 @@ The same guide documents `/claude-api migrate this project to claude-opus-5-5` f
 - [livenerf](https://github.com/ninjahawk/livenerf) - Daily drift check for Opus 5.5 after the 2026-09-22 launch, run through headless Claude Code. The README says the first results row comes after day 20 of the series. 45 stars, no license, last commit 2026-09-26.
 - [vulcanbench-opus55-traces](https://github.com/morganlinton/vulcanbench-opus55-traces) - 115 redacted Claude Code traces from an Opus 5.5 sweep of VulcanBench Frontier v4 at five effort levels (22–24 September 2026). Task text, code, and assistant prose are withheld. Sweep code is the general [VulcanBench](https://github.com/morganlinton/VulcanBench) harness (86 stars, Apache-2.0, last commit 2026-09-26). 0 stars, no license, last commit 2026-09-26.
 
-## Related lists
+## Related Lists
 
 Creative indexes, not developer setup. Linked so this list does not pretend they are absent.
 
@@ -80,8 +78,6 @@ Creative indexes, not developer setup. Linked so this list does not pretend they
 
 Additions need a working link and a reason the item is specific to Claude 5.5, or a check that shows it runs on 5.5. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## License
-
 [![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
 
-To the extent possible under law, mehmet turac has waived all copyright and related or neighboring rights to this work.
+To the extent possible under law, mehmet turac has waived all copyright and related or neighboring rights to this work. The text is in [LICENSE](LICENSE).
