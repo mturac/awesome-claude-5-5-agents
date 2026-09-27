@@ -37,7 +37,18 @@ def test_real_readme_entries_and_migration_prose() -> None:
     assert document.website_url == "https://mturac.github.io/awesome-claude-5-5-agents/"
     assert all("github.io" not in paragraph for paragraph in document.intro)
     entries = [entry for section in document.sections for entry in section.entries]
-    assert len(entries) == 21
+    assert len(entries) == 39
+    video = next(section for section in document.sections if section.title == "Video & Creative")
+    assert video.slug == "video--creative"
+    assert any("cumulative repository totals" in paragraph for paragraph in video.paragraphs)
+    assert any("Higgsfield-style" in paragraph for paragraph in video.paragraphs)
+    video_names = [entry.name for entry in video.entries]
+    assert video_names == sorted(video_names, key=str.casefold)
+    assert len(set(video_names)) == len(video_names)
+    assert any(entry.url == "https://github.com/Yusuke710/manim-skill" for entry in video.entries)
+    related = next(section for section in document.sections if section.title == "Related Lists")
+    assert any(entry.url == "https://github.com/opusvideo/awesome-claude-video" for entry in related.entries)
+    assert any(entry.url == "https://github.com/athemeroy/awesome-opus-5-5-videos" for entry in related.entries)
     by_name = {entry.name: entry for entry in entries}
     skill = by_name["Claude API skill"]
     assert skill.stars is None

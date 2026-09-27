@@ -151,7 +151,8 @@ def github_slugs(markdown: str) -> set[str]:
         title = line.lstrip("#").strip().lower()
         title = re.sub(r"[^\w\s-]", "", title, flags=re.UNICODE)
         title = title.replace("_", "")
-        slug = re.sub(r"\s+", "-", title.strip())
+        # Keep each space. "Video & Creative" must stay video--creative.
+        slug = title.strip().replace(" ", "-")
         slugs.add(slug)
     return slugs
 
@@ -179,6 +180,9 @@ def self_test() -> int:
         return 1
     if "migrating-to-55" not in github_slugs(sample):
         print("FAIL slug")
+        return 1
+    if github_slugs("## Video & Creative") != {"video--creative"}:
+        print("FAIL ampersand slug")
         return 1
     blocked = [
         "http://127.0.0.1/",

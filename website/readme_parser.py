@@ -73,10 +73,16 @@ class Document:
 
 
 def github_slug(title: str) -> str:
-    """Match the anchor slug used by the README link checker."""
+    """Match GitHub heading anchors and scripts/link-check.py.
+
+    Punctuation is removed and each remaining space becomes its own hyphen.
+    "Video & Creative" is therefore video--creative, the same slug awesome-lint
+    and GitHub generate. Collapsing the double space would point the contents
+    link at an anchor that does not exist.
+    """
     text = SLUG_PUNCT_RE.sub("", title.lower())
     text = text.replace("_", "")
-    return re.sub(r"\s+", "-", text.strip())
+    return text.strip().replace(" ", "-")
 
 
 def github_repo(url: str) -> str | None:
