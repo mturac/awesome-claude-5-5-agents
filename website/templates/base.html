@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>@@TITLE@@</title>
+  <meta name="description" content="@@TAGLINE@@">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      try {
+        var params = new URLSearchParams(location.search);
+        var saved = params.get("theme") || localStorage.getItem("theme");
+        var theme = saved;
+        if (theme !== "dark" && theme !== "light") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (err) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <div class="wrap">
+    <header class="hero">
+      <img src="claude55-hero.png" width="1280" height="720" alt="@@HERO_ALT@@">
+      <div class="hero-copy">
+        <p class="eyebrow">Developer setup</p>
+        <h1>@@TITLE@@</h1>
+        <p class="tagline">@@TAGLINE@@</p>
+      </div>
+    </header>
+    <div class="toolbar">
+      <label for="q">Search</label>
+      <input id="q" type="search" placeholder="Name, license, or phrase" autocomplete="off">
+      <p id="count" aria-live="polite">@@COUNT@@</p>
+      <button id="theme" type="button">Dark mode</button>
+    </div>
+    <nav class="nav" aria-label="Sections">@@NAV@@</nav>
+    <main id="content">@@MAIN@@</main>
+    <footer>@@CLOSING@@</footer>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

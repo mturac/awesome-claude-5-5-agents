@@ -1,5 +1,9 @@
 # Awesome Claude 5.5 Agents [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+![Terracotta starburst and a network of agent nodes on a cream field.](assets/claude55-hero.png)
+
+Website: https://mturac.github.io/awesome-claude-5-5-agents/
+
 > Developer setup for the Claude 5.5 family: skills, subagents, plugins, instruction files, hooks, migration tools, and eval harnesses.
 
 Anthropic's launch post on 22 September 2026 introduces Claude Opus 5.5 as the first model in the 5.5 family and says Claude Sonnet 5.5 and Claude Haiku 5.5 will follow in the coming weeks. This list tracks setup that is specific to 5.5, or that has been checked against it. Videos, games, demos, and showcase apps are out of scope.
